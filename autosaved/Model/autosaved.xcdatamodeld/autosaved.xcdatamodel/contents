@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AppEntity" representedClassName="AppEntity" isAbstract="YES" syncable="YES">
+        <attribute name="identifier_string" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="identifier_string"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Game" representedClassName="Game" parentEntity="AppEntity" syncable="YES">
+        <attribute name="add_date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image_data" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="multi_boolean" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="release_date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="single_boolean" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="title_string" attributeType="String"/>
+        <attribute name="wishlist_boolean" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="property_set" toMany="YES" deletionRule="Nullify" destinationEntity="Property" inverseName="game_set" inverseEntity="Property"/>
+    </entity>
+    <entity name="Property" representedClassName="Property" parentEntity="AppEntity" syncable="YES">
+        <attribute name="key_string" attributeType="String"/>
+        <attribute name="value_string" attributeType="String"/>
+        <relationship name="game_set" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="property_set" inverseEntity="Game"/>
+    </entity>
+</model>
