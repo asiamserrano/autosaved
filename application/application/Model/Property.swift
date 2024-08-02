@@ -40,6 +40,27 @@ public class Property {
         self.subcategory_id = builder.subcategory_id
     }
     
+    public enum Category: Enumerating {
+        case input
+        case mode
+        case format
+        case platform
+    }
+    
+    public enum SubCategory: Enumerating {
+        case series
+        case developer
+        case publisher
+        case genre
+        case mode
+        case physical
+        case digital
+        case playstation
+        case nintendo
+        case os
+        case xbox
+    }
+    
     public class Wrapper {
         
         @Published public var value: String
@@ -58,7 +79,8 @@ public class Property {
     public enum Builder {
         case input(InputBuilder)
         case mode(ModeEnum)
-        case platform(PlatformBuilder, FormatBuilder)
+        case format(FormatBuilder)
+        case platform(PlatformBuilder)
     }
     
 }

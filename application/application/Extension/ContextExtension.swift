@@ -20,7 +20,7 @@ public extension Context {
             game.boxart_data = wrapper.boxart
             self.store()
         } else {
-            let game: Game = .init(wrapper.title, wrapper.release, wrapper.status, wrapper.boxart)
+            let game: Game = .init(wrapper)
             self.save(game)
         }
     }

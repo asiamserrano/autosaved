@@ -8,18 +8,6 @@
 import Foundation
 import Extensions
 
-extension Game.Wrapper: Hashable {
-    
-    public static func == (lhs: Game.Wrapper, rhs: Game.Wrapper) -> Bool {
-        lhs.hashValue == rhs.hashValue
-    }
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.game(self.title, self.release, self.boxart)
-    }
-    
-}
-
 extension Game.Wrapper: ObservableObject {
     
     public func rollback() -> Void {
@@ -32,26 +20,10 @@ extension Game.Wrapper: ObservableObject {
     
 }
 
-public extension Game.Wrapper {
+extension Game.Wrapper: GameProtocol {
     
-//    var hasChanges: Bool {
-//        self.game.hashValue != self.hashValue && self.title_display.isNotEmpty
-//    }
-    
-    var isUnchanged: Bool {
+    public var isUnchanged: Bool {
         self.game?.hashValue == self.hashValue || self.title.isEmpty
-    }
-    
-    var title_id: String {
-        self.title.canonicalized
-    }
-    
-    var title_display: String {
-        self.title.trimmed
-    }
-    
-    var release_date: String {
-        self.release.dashless
     }
     
 }

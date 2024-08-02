@@ -76,7 +76,7 @@ struct ContentView: View {
 //        container.mainContext.autosaveEnabled = false
 //        container.mainContext.undoManager = undo
         
-        for _ in 0..<50 {
+        for _ in 0..<10 {
             let game: Game = .random()
             container.mainContext.insert(game)
 //            try? container.mainContext.save()

@@ -23,12 +23,8 @@ public extension GamesListViewing {
     var sortEnum: SortEnum { self.viewer.sortEnum }
     var ascending: Bool { self.viewer.ascending }
     
-}
-
-extension GamesListViewing {
-    
     @ViewBuilder
-    public func AddGameButton() -> some View {
+    func AddGameButton() -> some View {
         Button(action: {
             self.viewer.addGame.toggle()
         }, label: {
@@ -37,7 +33,7 @@ extension GamesListViewing {
     }
     
     @ViewBuilder
-    public func SortMenu() -> some View {
+    func SortMenu() -> some View {
         Spacer()
         Menu(content: {
             Picker("SortEnum", selection: sortBinding, content: {
@@ -58,7 +54,7 @@ extension GamesListViewing {
     }
     
     @ViewBuilder
-    public func EmptyListView() -> some View {
+    func EmptyListView() -> some View {
         VStack {
             Text(emptyPrompt)
                 .italic()

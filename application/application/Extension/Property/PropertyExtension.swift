@@ -10,25 +10,12 @@ import Protocols
 
 public extension Property {
     
-    enum SubCategory: Enumerating {
-        case series
-        case developer
-        case publisher
-        case genre
-        case mode
-        case physical
-        case digital
-        case playstation
-        case nintendo
-        case os
-        case xbox
+    var category: Property.Category {
+        .init(id: self.category_id)
     }
     
-    enum Category: Enumerating {
-        case input
-        case mode
-        case format
-        case platform
+    var subCategory: Property.SubCategory {
+        .init(id: self.subcategory_id)
     }
     
 }

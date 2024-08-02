@@ -8,12 +8,8 @@
 import Foundation
 import Protocols
 
-public protocol BuildingProtocol: PropertyProtocol, Displaying {
-        
-//    var typeEnum: TypeEnum { get }
-//    var tagEnum: TagEnum { get }
-//    var propertyEnum: PropertyEnum { get }
-    
+public protocol BuildingProtocol: PropertyProtocol {
+
     var category: Property.Category { get }
     var subCategory: Property.SubCategory { get }
     
@@ -29,16 +25,3 @@ public extension BuildingProtocol {
     var subcategory_id: String { self.subCategory.id }
     
 }
-
-
-//public extension BuildingProtocol {
-//    
-//    static func < (lhs: Self, rhs: Self) -> Bool {
-//        if lhs.typeEnum == rhs.typeEnum {
-//            return lhs.id < rhs.id
-//        } else {
-//            return lhs.typeEnum < rhs.typeEnum
-//        }
-//    }
-//
-//}

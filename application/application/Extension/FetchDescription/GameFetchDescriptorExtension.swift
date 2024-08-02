@@ -16,8 +16,8 @@ public extension FetchDescriptor where T: Game {
         .build(.game(game), descriptors)
     }
     
-    static func wrapper(_ wrapper: Game.Wrapper, _ descriptors: GameSortDescriptors = .init()) -> GameFetchDescriptor {
-        .build(.wrapper(wrapper), descriptors)
+    static func builder(_ builder: Game.Builder, _ descriptors: GameSortDescriptors = .init()) -> GameFetchDescriptor {
+        .build(.game(builder), descriptors)
     }
     
 }

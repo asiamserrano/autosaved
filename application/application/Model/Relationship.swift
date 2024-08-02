@@ -25,9 +25,21 @@ public class Relationship {
         self.sub_property_uuid = sub.uuid
     }
     
+    public enum Category {
+        case input(InputBuilder)
+        case mode(ModeEnum)
+        case platform(PlatformBuilder, FormatBuilder)
+    }
+    
     public struct Builder {
-        let game: Game.Wrapper
-        let property: Property.Wrapper
+        let game: Game.Builder
+        let category: Category
+        
+        public init(_ game: Game.Builder, _ category: Category) {
+            self.game = game
+            self.category = category
+        }
+        
     }
     
 }

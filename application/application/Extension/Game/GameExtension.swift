@@ -11,25 +11,38 @@ import Extensions
 extension Game: Hashable {
     
     public static func == (lhs: Game, rhs: Game) -> Bool {
-        lhs.hashValue == rhs.hashValue
+        lhs.wrapper == rhs.wrapper
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.game(self.title, self.release, self.boxart)
+        hasher.combine(self.wrapper)
     }
+    
+    private var wrapper: Game.Wrapper {
+        .init(self)
+    }
+   
     
 }
 
-public extension Game {
+extension Game: GamePredicateProtocol {
     
-    static func random(_ status: StatusEnum = .random) -> Game {
-        return .init(.random, .random, status)
+    public static func random(_ status: StatusEnum = .random) -> Game {
+        let builder: Game.Builder = .random(status)
+        return .init(builder)
     }
     
-    var title: String { self.title_display }
-    var release: Date { .init(self.release_date) }
-    var boxart: Data? { self.boxart_data }
-    var display: String { "\(self.title) (\(self.release.year))" }
-    var status: StatusEnum { .init(self.status_bool) }
+    public var display: String {
+        "\(self.title) (\(self.release.year))"
+    }
+    
+    public var title: String { self.title_display }
+    public var release: Date { .init(self.release_date) }
+    public var status: StatusEnum { .init(self.status_bool) }
+    public var boxart: Data? { self.boxart_data }
+    
+//    public var builder: Game.Builder {
+//        .init(self.title, self.release, self.status, self.boxart)
+//    }
     
 }

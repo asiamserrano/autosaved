@@ -17,14 +17,9 @@ public extension Predicate where repeat each Input: Game {
         }
     }
     
-    static func game(_ game: Game) -> GamePredicate {
-        let wrapper: Game.Wrapper = .init(game)
-        return .wrapper(wrapper)
-    }
-    
-    static func wrapper(_ wrapper: Game.Wrapper) -> GamePredicate {
-        let title_id: String = wrapper.title_id
-        let release_date: String = wrapper.release_date
+    static func game(_ game: any GamePredicateProtocol) -> GamePredicate {
+        let title_id: String = game.title_id
+        let release_date: String = game.release_date
         return #Predicate {
             $0.title_id == title_id &&
             $0.release_date == release_date
